@@ -43,7 +43,7 @@ export default function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a 
-                href="mailto:contact@blogify.com" 
+                href="mailto:logesh.r@senatio.com" 
                 className="text-gray-400 hover:text-white transition-colors"
                 aria-label="Email"
               >
