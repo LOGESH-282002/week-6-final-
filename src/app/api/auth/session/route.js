@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth'
 import { generateToken } from '@/lib/auth'
 import { authOptions } from '../[...nextauth]/route'
 
+// Force dynamic rendering for this route
+export const dynamic = 'force-dynamic'
+
 export async function GET(request) {
   try {
     const session = await getServerSession(authOptions)

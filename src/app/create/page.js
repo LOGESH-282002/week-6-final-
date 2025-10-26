@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import PostForm from '@/components/PostForm'
 import { PenTool, FileText } from 'lucide-react'
 import { toast } from 'react-hot-toast'
 
-export default function CreatePostPage() {
+function CreatePostContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const { user, loading, token } = useAuth()
@@ -112,5 +112,31 @@ export default function CreatePostPage() {
         <PostForm draft={draft} onSubmit={handlePostCreated} />
       </div>
     </div>
+  )
+}
+
+function LoadingFallback() {
+  return (
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-8">
+        <div className="flex items-center space-x-3 mb-4">
+          <PenTool className="h-8 w-8 text-primary-600" />
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+            Create New Post
+          </h1>
+        </div>
+      </div>
+      <div className="flex items-center justify-center min-h-64">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      </div>
+    </div>
+  )
+}
+
+export default function CreatePostPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <CreatePostContent />
+    </Suspense>
   )
 }
