@@ -229,14 +229,6 @@ export default function PostPage() {
         {/* Share Section */}
         <div className="bg-gray-50 dark:bg-gray-900 px-8 py-6 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">
-                Enjoyed this post?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Share it with your friends and followers!
-              </p>
-            </div>
             
             <ShareButton
               url={`/posts/${post.id}`}
