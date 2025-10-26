@@ -226,19 +226,6 @@ export default function PostPage() {
           )}
         </div>
 
-        {/* Share Section */}
-        <div className="bg-gray-50 dark:bg-gray-900 px-8 py-6 border-t border-gray-200 dark:border-gray-700">
-          <div className="flex items-center justify-between">
-            
-            <ShareButton
-              url={`/posts/${post.id}`}
-              title={post.title}
-              description={post.excerpt}
-              variant="button"
-              showLabel={true}
-            />
-          </div>
-        </div>
       </article>
 
       {/* Author Card */}
