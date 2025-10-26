@@ -197,12 +197,12 @@ export default function HomePage() {
                     <span>View All Posts</span>
                   </a>
                   {!token && (
-                    <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
+                    <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-200 dark:border-gray-700">
                       <Heart className="h-12 w-12 text-primary-600 mx-auto mb-4" />
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                         Love what you're reading?
                       </h3>
-                      <p className="text-gray-600 mb-6">
+                      <p className="text-gray-600 dark:text-gray-300 mb-6">
                         Join our community to start writing your own stories and connect with other writers.
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
