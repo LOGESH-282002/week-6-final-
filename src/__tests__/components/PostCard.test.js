@@ -51,8 +51,14 @@ describe('PostCard', () => {
 
     render(<PostCard post={mockPost} onDelete={mockOnDelete} />)
 
-    expect(screen.getByRole('link', { href: '/posts/1/edit' })).toBeInTheDocument()
-    expect(screen.getByRole('button')).toBeInTheDocument() // Delete button
+    // Check for edit link by finding all links and filtering by href
+    const links = screen.getAllByRole('link')
+    const editLink = links.find(link => link.getAttribute('href') === '/posts/1/edit')
+    expect(editLink).toBeInTheDocument()
+    
+    // Check for delete button by aria-label
+    const deleteButton = screen.getByRole('button', { name: 'Delete post' })
+    expect(deleteButton).toBeInTheDocument()
   })
 
   it('does not show edit and delete buttons for non-author', () => {
@@ -62,8 +68,12 @@ describe('PostCard', () => {
 
     render(<PostCard post={mockPost} onDelete={mockOnDelete} />)
 
-    expect(screen.queryByRole('link', { href: '/posts/1/edit' })).not.toBeInTheDocument()
-    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+    // Check that no edit link exists
+    const links = screen.getAllByRole('link')
+    const editLink = links.find(link => link.getAttribute('href') === '/posts/1/edit')
+    expect(editLink).toBeUndefined()
+    
+    expect(screen.queryByRole('button', { name: 'Delete post' })).not.toBeInTheDocument()
   })
 
   it('calls onDelete when delete button is clicked and confirmed', () => {
@@ -75,7 +85,7 @@ describe('PostCard', () => {
 
     render(<PostCard post={mockPost} onDelete={mockOnDelete} />)
 
-    const deleteButton = screen.getByRole('button')
+    const deleteButton = screen.getByRole('button', { name: 'Delete post' })
     fireEvent.click(deleteButton)
 
     expect(global.confirm).toHaveBeenCalledWith('Are you sure you want to delete this post?')
@@ -91,7 +101,7 @@ describe('PostCard', () => {
 
     render(<PostCard post={mockPost} onDelete={mockOnDelete} />)
 
-    const deleteButton = screen.getByRole('button')
+    const deleteButton = screen.getByRole('button', { name: 'Delete post' })
     fireEvent.click(deleteButton)
 
     expect(global.confirm).toHaveBeenCalled()

@@ -159,10 +159,10 @@ export default function HomePage() {
           {loading ? (
             <PostGridSkeleton count={6} />
           ) : posts.length === 0 ? (
-            <div className="text-center py-16 bg-white rounded-xl shadow-sm">
+            <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
               <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-6" />
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">No posts yet</h3>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto">
+              <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto">
                 Be the first to share your story and inspire others in our community!
               </p>
               {token && (
@@ -186,7 +186,7 @@ export default function HomePage() {
               
               {posts.length > 0 && (
                 <div className="text-center mt-12">
-                  <p className="text-gray-600 mb-6">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6">
                     Showing {posts.length} latest {posts.length === 1 ? 'story' : 'stories'}
                   </p>
                   <a 

@@ -160,12 +160,12 @@ export default function AllPostsPage() {
         </div>
 
         {/* Search and Filter Bar Skeleton */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-8 animate-pulse">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8 animate-pulse">
           <div className="flex flex-col lg:flex-row gap-4">
-            <div className="flex-1 h-10 bg-gray-200 rounded-lg"></div>
+            <div className="flex-1 h-10 bg-gray-200 dark:bg-gray-600 rounded-lg"></div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <div className="h-10 bg-gray-200 rounded-lg w-40"></div>
-              <div className="h-10 bg-gray-200 rounded-lg w-32"></div>
+              <div className="h-10 bg-gray-200 dark:bg-gray-600 rounded-lg w-40"></div>
+              <div className="h-10 bg-gray-200 dark:bg-gray-600 rounded-lg w-32"></div>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function AllPostsPage() {
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
           All Stories
         </h1>
-        <p className="text-xl text-gray-600">
+        <p className="text-xl text-gray-600 dark:text-gray-300">
           Discover amazing content from our community of writers
         </p>
       </div>
@@ -218,20 +218,6 @@ export default function AllPostsPage() {
                 <option value="author">Author A-Z</option>
               </select>
             </div>
-
-            {/* Posts Per Page Selector */}
-            <div className="relative">
-              <select
-                value={postsPerPage}
-                onChange={(e) => setPostsPerPage(parseInt(e.target.value))}
-                className="select-field px-3 py-2 min-w-[120px]"
-              >
-                <option value={6}>6 per page</option>
-                <option value={9}>9 per page</option>
-                <option value={12}>12 per page</option>
-                <option value={18}>18 per page</option>
-              </select>
-            </div>
           </div>
         </div>
 
@@ -259,12 +245,12 @@ export default function AllPostsPage() {
 
       {/* Posts Grid */}
       {filteredPosts.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-xl shadow-sm">
+        <div className="text-center py-16 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700">
           <BookOpen className="h-16 w-16 text-gray-400 mx-auto mb-6" />
           <h3 className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
             {searchTerm ? 'No posts found' : 'No posts yet'}
           </h3>
-          <p className="text-gray-600 mb-8 max-w-md mx-auto">
+          <p className="text-gray-600 dark:text-gray-300 mb-8 max-w-md mx-auto">
             {searchTerm
               ? `No posts match your search for "${searchTerm}". Try different keywords or browse all posts.`
               : 'Be the first to share your story and inspire others in our community!'
@@ -304,7 +290,7 @@ export default function AllPostsPage() {
                 onPageChange={handlePageChange}
                 totalItems={filteredPosts.length}
                 itemsPerPage={postsPerPage}
-                className="bg-white rounded-xl p-6 shadow-sm border border-gray-200"
+                className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-200 dark:border-gray-700"
               />
             </div>
           )}
@@ -312,11 +298,11 @@ export default function AllPostsPage() {
           {/* CTA Section for non-authenticated users */}
           {!token && (
             <div className="mt-12">
-              <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 text-center">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-200 dark:border-gray-700 text-center">
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   Ready to share your story?
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
                   Join our community and start writing your own posts.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

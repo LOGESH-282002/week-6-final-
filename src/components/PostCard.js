@@ -37,12 +37,14 @@ export default function PostCard({ post, onDelete }) {
             <Link
               href={`/posts/${post.id}/edit`}
               className="p-2 text-gray-400 dark:text-gray-500 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              aria-label="Edit post"
             >
               <Edit className="h-4 w-4" />
             </Link>
             <button
               onClick={handleDelete}
               className="p-2 text-gray-400 dark:text-gray-500 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+              aria-label="Delete post"
             >
               <Trash2 className="h-4 w-4" />
             </button>
