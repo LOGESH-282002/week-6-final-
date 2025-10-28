@@ -44,7 +44,7 @@ export default function PostForm({ post, draft, onSubmit, isEditing = false }) {
 
   // Auto-save hook
   const { manualSave, isSaving } = useAutoSave(title, content, draftId, setDraftId)
-  
+
   // Confetti hook
   const { fireSideCannons } = useConfetti()
 
@@ -93,22 +93,22 @@ export default function PostForm({ post, draft, onSubmit, isEditing = false }) {
         toast.success('Post updated successfully!')
       } else {
         // Check if this might be user's first post (simple heuristic)
-        const isLikelyFirstPost = data.title.toLowerCase().includes('first') || 
-                                  data.content.toLowerCase().includes('first post') ||
-                                  data.title.toLowerCase().includes('hello world')
+        const isLikelyFirstPost = data.title.toLowerCase().includes('first') ||
+          data.content.toLowerCase().includes('first post') ||
+          data.title.toLowerCase().includes('hello world')
 
         if (isLikelyFirstPost) {
           showCelebrationToast('🎉 Congratulations on your first post! Welcome to the Blogify community!', 'milestone')
         } else {
           showCelebrationToast('🎉 Your story is now live for the world to read!', 'publish')
         }
-        
+
         // Fire confetti
         setTimeout(() => {
           fireSideCannons()
         }, 500)
       }
-      
+
       onSubmit(result.post)
     } catch (error) {
       toast.error(error.message)
@@ -169,7 +169,7 @@ export default function PostForm({ post, draft, onSubmit, isEditing = false }) {
 
       {/* Auto-save indicator */}
       {token && (title.trim() || content.trim()) && (
-        <div className="flex items-center justify-between bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-3">
           <div className="flex items-center space-x-2 text-blue-700 dark:text-blue-300">
             <FileText className="h-4 w-4" />
             <span className="text-sm">
@@ -187,8 +187,8 @@ export default function PostForm({ post, draft, onSubmit, isEditing = false }) {
         </div>
       )}
 
-      <div className="flex items-center justify-between">
-        <div className="flex items-center space-x-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
           <button
             type="button"
             onClick={() => window.history.back()}
@@ -202,7 +202,7 @@ export default function PostForm({ post, draft, onSubmit, isEditing = false }) {
             <button
               type="button"
               onClick={handleSaveDraft}
-              className="btn-secondary inline-flex items-center space-x-2"
+              className="btn-secondary inline-flex items-center justify-center space-x-2"
               disabled={isSubmitting || isSaving}
             >
               <Save className="h-4 w-4" />
@@ -213,7 +213,7 @@ export default function PostForm({ post, draft, onSubmit, isEditing = false }) {
 
         <button
           type="submit"
-          className="btn-primary inline-flex items-center space-x-2"
+          className="btn-primary inline-flex items-center justify-center space-x-2"
           disabled={isSubmitting}
         >
           <Send className="h-4 w-4" />

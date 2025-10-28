@@ -81,7 +81,7 @@ function CreatePostContent() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <div className="flex items-center space-x-3 mb-4">
               {draft ? <FileText className="h-8 w-8 text-blue-600" /> : <PenTool className="h-8 w-8 text-primary-600" />}
@@ -90,15 +90,15 @@ function CreatePostContent() {
               </h1>
             </div>
             <p className="text-gray-600 dark:text-gray-300">
-              {draft 
+              {draft
                 ? 'Continue working on your draft. Changes are automatically saved.'
                 : 'Share your thoughts and stories with the community. Your work is automatically saved as you type.'
               }
             </p>
           </div>
           {draft && (
-            <a 
-              href="/drafts" 
+            <a
+              href="/drafts"
               className="btn-secondary inline-flex items-center space-x-2"
             >
               <FileText className="h-4 w-4" />

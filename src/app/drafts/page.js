@@ -7,11 +7,11 @@ import { PostGridSkeleton } from '@/components/PostCardSkeleton'
 import Pagination from '@/components/Pagination'
 import { useConfetti } from '@/hooks/useConfetti'
 import { showCelebrationToast } from '@/components/CelebrationToast'
-import { 
-  FileText, 
-  Edit3, 
-  Trash2, 
-  Send, 
+import {
+  FileText,
+  Edit3,
+  Trash2,
+  Send,
   Calendar,
   Clock,
   PlusCircle
@@ -24,7 +24,7 @@ export default function DraftsPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [draftsPerPage] = useState(9)
   const [paginatedDrafts, setPaginatedDrafts] = useState([])
-  
+
   // Confetti hook
   const { fireSideCannons } = useConfetti()
 
@@ -117,10 +117,10 @@ export default function DraftsPage() {
       }
 
       setDrafts(drafts.filter(draft => draft.id !== draftId))
-      
+
       // Show celebration for published draft
       showCelebrationToast('✨ Your draft is now published and live!', 'draft')
-      
+
       // Fire confetti celebration
       setTimeout(() => {
         fireSideCannons()
@@ -188,7 +188,7 @@ export default function DraftsPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       {/* Header */}
       <div className="mb-8">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div>
             <h1 className="text-2xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
               My Drafts
@@ -197,8 +197,8 @@ export default function DraftsPage() {
               Your saved drafts and work in progress
             </p>
           </div>
-          <a 
-            href="/create" 
+          <a
+            href="/create"
             className="btn-primary inline-flex items-center space-x-2"
           >
             <PlusCircle className="h-5 w-5" />
@@ -256,7 +256,7 @@ export default function DraftsPage() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center justify-between">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                   <div className="flex items-center space-x-2">
                     <a
                       href={`/create?draft=${draft.id}`}
@@ -265,7 +265,7 @@ export default function DraftsPage() {
                       <Edit3 className="h-4 w-4" />
                       <span>Edit</span>
                     </a>
-                    
+
                     <button
                       onClick={() => handlePublishDraft(draft.id)}
                       className="inline-flex items-center space-x-1 text-green-600 hover:text-green-700 text-sm font-medium"
